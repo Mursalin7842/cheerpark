@@ -63,30 +63,14 @@
                         <div class="panel-header">
                             <div class="flex justify-between items-center mb-4">
                                 <h2 class="text-2xl font-bold">Messages</h2>
-                                <button class="btn-circle-add">
-                                    <i class="fas fa-plus"></i>
-                                </button>
                             </div>
                             <div class="input-group chat-search">
                                 <i class="fas fa-search"></i>
                                 <input type="text" placeholder="Search..." />
                             </div>
                         </div>
-                        <div class="flex-1 overflow-y-auto chat-scroll panel-body-padding">
-                            <div class="list-item">
-                                <div class="relative">
-                                    <div class="chat-list-avatar">T</div>
-                                    <div class="chat-list-status-dot"></div>
-                                </div>
-                                <div class="chat-list-text">
-                                    <div class="flex justify-between items-baseline mb-1">
-                                        <h4 class="font-bold text-sm">Tausif Bin Mozid</h4>
-                                        <span class="chat-list-meta-time">10:05</span>
-                                    </div>
-                                    <p class="text-muted text-sm chat-list-preview">Did you
-                                        finish the settings page?</p>
-                                </div>
-                            </div>
+                        <div id="chat-list" class="flex-1 overflow-y-auto chat-scroll panel-body-padding">
+                            <!-- Chat items will be rendered by dashboard_chats.js -->
                         </div>
                     </div>
 
@@ -97,7 +81,7 @@
                                     <i class="fas fa-user"></i>
                                 </div>
                                 <div>
-                                    <h3 class="text-lg font-bold">Group 63_N Project</h3>
+                                    <h3 id="chat-active-name" class="text-lg font-bold">Group 63_N Project</h3>
                                     <div class="flex items-center gap-2">
                                         <span class="status-pill-online">Online</span>
                                     </div>
@@ -110,20 +94,7 @@
                         </div>
 
                         <div class="chat-area chat-scroll">
-                            <div class="flex justify-start">
-                                <div class="message-bubble msg-received">
-                                    <p>Ibrahim, did you add the database connection?</p>
-                                    <span class="message-timestamp-left">10:30
-                                        AM</span>
-                                </div>
-                            </div>
-                            <div class="flex justify-end">
-                                <div class="message-bubble msg-sent">
-                                    <p>Yes, I just finished the SQL schema.</p>
-                                    <span class="message-timestamp-right">10:32
-                                        AM <i class="fas fa-check-double ml-1"></i></span>
-                                </div>
-                            </div>
+                            <!-- Messages will be added here by dashboard_chats.js -->
                         </div>
 
                         <div class="chat-footer">
@@ -143,7 +114,7 @@
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="dashboard_chats.js"></script>
 </body>
 
 </html>

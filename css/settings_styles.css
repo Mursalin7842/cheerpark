@@ -1,5 +1,10 @@
 /* Account settings page */
 
+#tab-settings {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .settings-container {
     max-width: 800px;
     margin: 0 auto;

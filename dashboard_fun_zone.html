@@ -36,6 +36,39 @@
             </div>
         </div>
 
+        <!-- Create Zone modal -->
+        <div id="create-zone-modal" class="hidden modal-overlay">
+            <div class="modal-content">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold">Create New Zone</h3>
+                    <button id="create-zone-close" class="text-muted hover:text-white transition">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <form id="create-zone-form" class="form-vertical-md">
+                    <div class="modal-description">
+                        <p class="text-sm text-muted">Fill in the details to create a new anonymous zone.</p>
+                    </div>
+                    <div class="settings-row">
+                        <label class="settings-label">Zone Name</label>
+                        <div class="input-group">
+                            <input type="text" id="create-zone-name" placeholder="e.g. Night Owls Study Group" required />
+                        </div>
+                    </div>
+                    <div class="settings-row">
+                        <label class="settings-label">Short Description</label>
+                        <div class="input-group">
+                            <input type="text" id="create-zone-description" placeholder="What is this zone about?" />
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-4 mt-4">
+                        <button type="button" id="create-zone-cancel" class="btn-outline">Cancel</button>
+                        <button type="submit" class="btn-pink">Create Zone</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <!-- Dashboard sidebar + FUN ZONE tab only -->
         <div id="dashboard" class="w-full h-full gap-4 flex">
             <div class="floating-card sidebar">
@@ -94,14 +127,7 @@
                             </button>
                         </div>
                         <div class="flex-1 overflow-y-auto p-4 funzone-list-body">
-                            <div class="list-item funzone-list-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="font-bold text-sm funzone-title">Group 1</span>
-                                    <span class="funzone-list-badge">40
-                                        Online</span>
-                                </div>
-                                <p class="text-muted text-sm italic">"we are all anonymous"</p>
-                            </div>
+                            <!-- Zones are rendered by dashboard_fun_zone.js -->
                         </div>
                     </div>
 
@@ -112,8 +138,8 @@
                                     <i class="fas fa-user-secret"></i>
                                 </div>
                                 <div>
-                                    <h3 class="font-bold text-lg">Group 1 (Anonymous)</h3>
-                                    <p class="funzone-identity-pill">
+                                    <h3 class="font-bold text-lg funzone-active-title">Group 1 (Anonymous)</h3>
+                                    <p class="funzone-identity-pill funzone-active-identity">
                                         Identity: Guest_8842</p>
                                 </div>
                             </div>
@@ -142,7 +168,7 @@
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="dashboard_fun_zone.js"></script>
 </body>
 
 </html>

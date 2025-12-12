@@ -71,19 +71,20 @@
                                     <button class="btn-pink settings-avatar-btn-primary">Change
                                         Avatar</button>
                                     <button class="btn-outline settings-avatar-btn-danger">Remove</button>
+                                    <input type="file" id="settings-avatar-input" accept="image/*" class="hidden" />
                                 </div>
                             </div>
                             <div class="grid grid-cols-2 gap-6">
                                 <div class="settings-row">
                                     <label class="settings-label">Display Name</label>
                                     <div class="input-group">
-                                        <input type="text" value="Mursaline Huqe" />
+                                        <input type="text" class="settings-display-name" value="Mursaline Huqe" />
                                     </div>
                                 </div>
                                 <div class="settings-row">
                                     <label class="settings-label">Status Message</label>
                                     <div class="input-group">
-                                        <input type="text" value="Coding the future..." />
+                                        <input type="text" class="settings-status" value="Coding the future..." />
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +95,7 @@
                             <div class="settings-row">
                                 <label class="settings-label">Email Address</label>
                                 <div class="input-group">
-                                    <input type="email" value="mursaline@diu.edu.bd" />
+                                    <input type="email" class="settings-email" value="mursaline@diu.edu.bd" />
                                 </div>
                             </div>
                             <div class="settings-row">
@@ -112,21 +113,21 @@
                             <div class="settings-title"><i class="fas fa-sliders-h"></i> Preferences</div>
                             <div class="settings-row flex justify-between items-center">
                                 <span>Desktop Notifications</span>
-                                <div class="toggle">
+                                <div class="toggle settings-toggle-desktop">
                                     <div class="toggle-thumb"></div>
                                 </div>
                             </div>
                             <div class="settings-row flex justify-between items-center">
                                 <span>Sound Effects</span>
-                                <div class="toggle--off">
+                                <div class="toggle settings-toggle-sound toggle--off">
                                     <div class="toggle-thumb--off"></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="flex justify-end gap-4 mb-8">
-                            <button class="btn-outline">Cancel</button>
-                            <button class="btn-pink">Save Changes</button>
+                            <button class="btn-outline settings-cancel-btn">Cancel</button>
+                            <button class="btn-pink settings-save-btn">Save Changes</button>
                         </div>
                     </div>
                 </div>
@@ -134,7 +135,7 @@
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="dashboard_settings_account.js"></script>
 </body>
 
 </html>
