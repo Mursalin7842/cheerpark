@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cheer Park - Secure Messaging</title>
+
+   
+
+    <!-- FontAwesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- App Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+
+
+    <!-- APP CONTAINER -->
+
+    <div id="app">
+
+
+
+        <!-- =========================
+
+             MODALS
+
+             ========================= -->
+
+        <div id="invite-modal" class="hidden absolute inset-0 z-[70] flex items-center justify-center">
+
+            <div class="modal-content">
+
+                <div class="flex justify-between items-center mb-6">
+
+                    <h3 class="text-xl font-bold">Invite Friends</h3>
+
+                    <button onclick="document.getElementById('invite-modal').classList.add('hidden')" class="text-muted hover:text-white transition"><i class="fas fa-times text-xl"></i></button>
+
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+
+                    <p class="text-sm text-muted">Share this secure link to invite others:</p>
+
+                </div>
+
+                <div class="flex gap-2">
+
+                    <div class="input-group w-full">
+
+                        <input type="text" value="cheerpark.com/g/8392" readonly>
+
+                    </div>
+
+                    <button class="btn-pink">Copy</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+
+             AUTH SCREENS (Login / Signup)
+
+             ========================= -->
+
+        <div id="auth-container">
+
+            <!-- LOGIN SCREEN -->
+
+            <div id="login-screen" class="floating-card auth-card relative z-10">
+
+                <div class="auth-left">
+
+                    <div class="flex items-center gap-4 mb-8">
+
+                        <div class="flex items-center justify-center text-white text-3xl shadow-lg" style="background: var(--primary-pink); width: 64px; height: 64px; border-radius: 16px;">
+
+                            <i class="fas fa-comment-dots"></i>
+
+                        </div>
+
+                        <h1 class="text-5xl font-bold tracking-tight">Cheer Park</h1>
+
+                    </div>
+
+                    <h2 class="text-4xl font-bold mb-10 leading-tight" style="color: var(--text-main);">We care about<br><span style="color: var(--primary-pink);">your Secrets...</span></h2>
+
+                   
+
+                    <div>
+
+                        <div class="feature-item">
+
+                            <i class="far fa-check-circle text-2xl" style="color: var(--primary-pink);"></i>
+
+                            <span>Screenshot Notification</span>
+
+                        </div>
+
+                        <div class="feature-item">
+
+                            <i class="fas fa-user-secret text-2xl" style="color: var(--primary-pink);"></i>
+
+                            <span>Anonymous Group Chat</span>
+
+                        </div>
+
+                        <div class="feature-item">
+
+                            <i class="fas fa-photo-video text-2xl" style="color: var(--primary-pink);"></i>
+
+                            <span>Lossless Media Sharing</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="auth-right">
+
+                    <div style="width: 100%; max-width: 320px;">
+
+                        <h2 class="text-4xl font-bold mb-2">Welcome Back</h2>
+
+                        <p class="text-muted mb-10">Please enter your details.</p>
+
+                       
+
+                        <!-- Added 'name' attributes for PHP handling -->
+
+                        <form onsubmit="handleLogin(event)" style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+                            <div class="input-group">
+
+                                <i class="far fa-user"></i>
+
+                                <input type="text" id="login-username" name="username" placeholder="Username" required>
+
+                            </div>
+
+                            <div class="input-group">
+
+                                <i class="fas fa-lock"></i>
+
+                                <input type="password" id="login-password" name="password" placeholder="Password" required>
+
+                            </div>
+
+                            <button type="submit" class="btn-pink w-full">Log in</button>
+
+                           
+
+                            <div class="mt-8 pt-6 text-center" style="border-top: 1px solid var(--border-color); margin-top: 2rem; padding-top: 1.5rem;">
+
+                                <p class="text-xs font-bold text-muted mb-3">New to Cheer Park?</p>
+
+                                <button type="button" onclick="toggleAuth('register')" class="btn-outline w-full">
+
+                                    Create New Account
+
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- REGISTER SCREEN -->
+
+            <div id="register-screen" class="hidden floating-card auth-card relative z-10">
+
+                 <div class="auth-left">
+
+                    <div class="flex items-center gap-4 mb-8">
+
+                        <div class="flex items-center justify-center text-white text-3xl shadow-lg" style="background: var(--primary-pink); width: 64px; height: 64px; border-radius: 16px;">
+
+                            <i class="fas fa-user-plus"></i>
+
+                        </div>
+
+                        <h1 class="text-5xl font-bold tracking-tight">Join Us</h1>
+
+                    </div>
+
+                    <h2 class="text-4xl font-bold mb-6">Start your <span style="color: var(--primary-pink);">Secure Journey</span></h2>
+
+                    <p class="text-lg text-muted">Create an account to access features like lossless sharing and anonymous zones.</p>
+
+                </div>
+
+
+
+                <div class="auth-right">
+
+                    <div style="width: 100%; max-width: 320px;">
+
+                        <h2 class="text-4xl font-bold mb-2">Create Account</h2>
+
+                        <p class="text-muted mb-8">It's free and takes 1 minute.</p>
+
+                       
+
+                        <!-- Added 'name' attributes for PHP handling -->
+
+                        <form onsubmit="handleRegister(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+
+                            <div class="input-group">
+
+                                <i class="far fa-user"></i>
+
+                                <input type="text" name="reg-username" placeholder="Username" required>
+
+                            </div>
+
+                            <div class="input-group">
+
+                                <i class="far fa-envelope"></i>
+
+                                <input type="email" name="reg-email" placeholder="Email Address" required>
+
+                            </div>
+
+                            <div class="input-group">
+
+                                <i class="fas fa-lock"></i>
+
+                                <input type="password" name="reg-password" placeholder="Password" required>
+
+                            </div>
+
+                            <button type="submit" class="btn-pink w-full" style="margin-top: 0.5rem;">Sign Up</button>
+
+                           
+
+                            <div class="text-center" style="border-top: 1px solid var(--border-color); margin-top: 1.5rem; padding-top: 1rem;">
+
+                                <p class="text-xs font-bold text-muted mb-2">Already have an account?</p>
+
+                                <button type="button" onclick="toggleAuth('login')" style="color: var(--primary-pink); background: none; border: none; font-weight: bold; cursor: pointer;">
+
+                                    Log In Here
+
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+
+             DASHBOARD
+
+             ========================= -->
+
+        <div id="dashboard" class="hidden w-full h-full gap-4 flex">
+
+
+
+            <!-- 1. FLOATING SIDEBAR -->
+
+            <div class="floating-card sidebar">
+
+                <div class="flex flex-col gap-4 w-full items-center">
+
+                    <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 1rem;">
+
+                        <i class="fas fa-user text-2xl text-white"></i>
+
+                    </div>
+
+
+
+                    <div style="width: 100%; position: relative; padding: 0 10px;">
+
+                        <div id="active-indicator" style="top: 0;"></div>
+
+
+
+                        <button onclick="switchTab('home')" class="nav-btn">
+
+                            <i class="fas fa-comment-alt"></i>
+
+                            <span>CHATS</span>
+
+                        </button>
+
+                       
+
+                        <!-- NEW PEOPLE TAB BUTTON -->
+
+                        <button onclick="switchTab('people')" class="nav-btn">
+
+                            <i class="fas fa-users"></i>
+
+                            <span>PEOPLE</span>
+
+                        </button>
+
+                       
+
+                        <button onclick="switchTab('funzone')" class="nav-btn">
+
+                            <i class="fas fa-gamepad"></i>
+
+                            <span>ZONE</span>
+
+                        </button>
+
+
+
+                        <button onclick="switchTab('explore')" class="nav-btn">
+
+                            <i class="fas fa-compass"></i>
+
+                            <span>EXPLORE</span>
+
+                        </button>
+
+
+
+                        <button onclick="switchTab('settings')" class="nav-btn">
+
+                            <i class="fas fa-cog"></i>
+
+                            <span>SETTING</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+               
+
+                <div class="flex flex-col gap-4 items-center">
+
+                    <button onclick="logout()" class="btn-icon" style="border-radius: 12px; width: 48px; height: 48px;">
+
+                        <i class="fas fa-sign-out-alt"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 2. CONTENT AREA (Tabs) -->
+
+            <div id="main-content" class="relative w-full h-full overflow-hidden">
+
+
+
+                <!-- TAB: HOME -->
+
+                <div id="tab-home" class="w-full h-full flex gap-4">
+
+                    <div class="floating-card list-panel">
+
+                        <div style="padding: 1.5rem; border-bottom: 1px solid var(--border-color);">
+
+                            <div class="flex justify-between items-center mb-4">
+
+                                <h2 class="text-2xl font-bold">Messages</h2>
+
+                                <button style="width: 32px; height: 32px; border-radius: 50%; background: rgba(255, 64, 110, 0.2); color: var(--primary-pink); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer;"><i class="fas fa-plus"></i></button>
+
+                            </div>
+
+                            <div class="input-group" style="background: var(--bg-hover);">
+
+                                <i class="fas fa-search"></i>
+
+                                <input type="text" placeholder="Search...">
+
+                            </div>
+
+                        </div>
+
+                        <div class="flex-1 overflow-y-auto p-4 chat-scroll" style="padding: 1rem;">
+
+                            <div class="list-item">
+
+                                <div class="relative">
+
+                                    <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--primary-pink); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">T</div>
+
+                                    <div style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; background: #22c55e; border: 2px solid var(--bg-card); border-radius: 50%;"></div>
+
+                                </div>
+
+                                <div style="flex: 1; min-width: 0;">
+
+                                    <div class="flex justify-between items-baseline mb-1">
+
+                                        <h4 class="font-bold text-sm">Tausif Bin Mozid</h4>
+
+                                        <span class="text-muted" style="font-size: 10px; font-weight: bold;">10:05</span>
+
+                                    </div>
+
+                                    <p class="text-muted text-sm" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Did you finish the settings page?</p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="floating-card chat-window">
+
+                        <div class="chat-header">
+
+                            <div class="flex items-center gap-4">
+
+                                <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--primary-pink); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;"><i class="fas fa-user"></i></div>
+
+                                <div>
+
+                                    <h3 class="text-lg font-bold">Group 63_N Project</h3>
+
+                                    <div class="flex items-center gap-2">
+
+                                        <span style="background: rgba(34, 197, 94, 0.2); color: #4ade80; padding: 2px 8px; border-radius: 99px; font-size: 10px; font-weight: bold; text-transform: uppercase;">Online</span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="flex gap-2">
+
+                                <button class="btn-icon"><i class="fas fa-phone"></i></button>
+
+                                <button class="btn-icon"><i class="fas fa-video"></i></button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="chat-area chat-scroll">
+
+                            <div class="flex justify-start">
+
+                                <div class="message-bubble msg-received">
+
+                                    <p>Ibrahim, did you add the database connection?</p>
+
+                                    <span style="font-size: 10px; color: var(--text-muted); display: block; margin-top: 5px;">10:30 AM</span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="flex justify-end">
+
+                                <div class="message-bubble msg-sent">
+
+                                    <p>Yes, I just finished the SQL schema.</p>
+
+                                    <span style="font-size: 10px; opacity: 0.7; display: block; text-align: right; margin-top: 5px;">10:32 AM <i class="fas fa-check-double ml-1"></i></span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div style="padding: 1.5rem; background: var(--bg-card); border-top: 1px solid var(--border-color);">
+
+                            <div class="input-group" style="border-radius: 99px; background: var(--bg-dark);">
+
+                                <button style="background: none; border: none; color: var(--text-muted); cursor: pointer; margin-right: 10px;"><i class="fas fa-paperclip text-lg"></i></button>
+
+                                <input type="text" placeholder="Type a message...">
+
+                                <button style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary-pink); border: none; color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+
+                                    <i class="fas fa-paper-plane" style="margin: 0; font-size: 0.9rem;"></i>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TAB: PEOPLE (UPDATED WITH SPECIFIC MOCK DATA) -->
+
+                <div id="tab-people" class="hidden w-full h-full floating-card" style="flex-direction: column;">
+
+                    <div style="background: var(--bg-hover); padding: 3rem; border-bottom: 1px solid var(--border-color);">
+
+                        <h2 class="text-4xl font-bold mb-2">Project Members</h2>
+
+                        <p class="text-muted mb-8">Course: Web Engineering (CSE_415) | Section: 63_N</p>
+
+                        <div class="input-group" style="background: var(--bg-card); max-width: 600px; padding: 1rem;">
+
+                            <i class="fas fa-search text-xl" style="margin-right: 1rem;"></i>
+
+                            <input type="text" placeholder="Search by name or ID..." style="font-size: 1.1rem;">
+
+                        </div>
+
+                    </div>
+
+                    <div class="flex-1 overflow-y-auto" style="padding: 3rem; background: var(--bg-card);">
+
+                        <h3 class="text-lg font-bold mb-6">Faculty & Team</h3>
+
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+
+                           
+
+                            <!-- Lecturer -->
+
+                            <div style="background: var(--bg-hover); padding: 1.5rem; border-radius: 16px; border: 1px solid #6366f1; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);">
+
+                                <div style="width: 80px; height: 80px; background: #6366f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1rem; color: white;">S</div>
+
+                                <h4 class="font-bold text-lg">Subarna Akter Liza</h4>
+
+                                <p class="text-sm text-white mb-1" style="font-weight: 600;">Lecturer</p>
+
+                                <p class="text-xs text-muted mb-4">Department of CSE</p>
+
+                                <button class="btn-pink" style="padding: 0.5rem 1.5rem; width: 100%;">Message</button>
+
+                            </div>
+
+
+
+                            <!-- Student 1 -->
+
+                            <div style="background: var(--bg-hover); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; text-align: center;">
+
+                                <div style="width: 80px; height: 80px; background: #ec4899; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1rem; color: white;">M</div>
+
+                                <h4 class="font-bold text-lg">Mursaline Huqe</h4>
+
+                                <p class="text-sm text-muted mb-4">ID: 0242220005101804</p>
+
+                                <button class="btn-outline" style="padding: 0.5rem 1.5rem; width: 100%;">Connect</button>
+
+                            </div>
+
+
+
+                             <!-- Student 2 -->
+
+                             <div style="background: var(--bg-hover); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; text-align: center;">
+
+                                <div style="width: 80px; height: 80px; background: #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1rem; color: white;">T</div>
+
+                                <h4 class="font-bold text-lg">Tausif Bin Mozid</h4>
+
+                                <p class="text-sm text-muted mb-4">ID: 0242220005101711</p>
+
+                                <button class="btn-outline" style="padding: 0.5rem 1.5rem; width: 100%;">Connect</button>
+
+                            </div>
+
+
+
+                            <!-- Student 3 -->
+
+                            <div style="background: var(--bg-hover); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; text-align: center;">
+
+                                <div style="width: 80px; height: 80px; background: #eab308; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1rem; color: white;">S</div>
+
+                                <h4 class="font-bold text-lg">Shaik Ishtiaque Mahmud</h4>
+
+                                <p class="text-sm text-muted mb-4">ID: 0242220005101691</p>
+
+                                <button class="btn-outline" style="padding: 0.5rem 1.5rem; width: 100%;">Connect</button>
+
+                            </div>
+
+
+
+                            <!-- Student 4 -->
+
+                            <div style="background: var(--bg-hover); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; text-align: center;">
+
+                                <div style="width: 80px; height: 80px; background: #06b6d4; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1rem; color: white;">Z</div>
+
+                                <h4 class="font-bold text-lg">Zisan Azad Salin</h4>
+
+                                <p class="text-sm text-muted mb-4">ID: 0242220005101805</p>
+
+                                <button class="btn-outline" style="padding: 0.5rem 1.5rem; width: 100%;">Connect</button>
+
+                            </div>
+
+
+
+                            <!-- Student 5 -->
+
+                            <div style="background: var(--bg-hover); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; text-align: center;">
+
+                                <div style="width: 80px; height: 80px; background: #8b5cf6; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1rem; color: white;">M</div>
+
+                                <h4 class="font-bold text-lg">Md Ibrahim Ibna Khalil</h4>
+
+                                <p class="text-sm text-muted mb-4">ID: 024222000510816</p>
+
+                                <button class="btn-outline" style="padding: 0.5rem 1.5rem; width: 100%;">Connect</button>
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TAB: FUN ZONE -->
+
+                <div id="tab-funzone" class="hidden w-full h-full flex gap-4">
+
+                    <div class="floating-card list-panel">
+
+                        <div style="padding: 1.5rem; border-bottom: 1px solid var(--border-color); background: rgba(88, 28, 135, 0.2);">
+
+                            <h2 class="text-xl font-bold mb-4 flex items-center gap-2" style="color: #d8b4fe;">
+
+                                <i class="fas fa-mask"></i> Fun Zone
+
+                            </h2>
+
+                            <div class="input-group" style="background: var(--bg-dark);">
+
+                                <i class="fas fa-search"></i>
+
+                                <input type="text" placeholder="Filter groups...">
+
+                            </div>
+
+                             <button class="btn-pink w-full" style="margin-top: 1rem; background: #9333ea; font-size: 0.8rem;">
+
+                                <i class="fas fa-plus mr-2"></i> CREATE NEW ZONE
+
+                            </button>
+
+                        </div>
+
+                        <div class="flex-1 overflow-y-auto p-4" style="padding: 1rem;">
+
+                            <div class="list-item" style="background: rgba(88, 28, 135, 0.1); border-color: rgba(88, 28, 135, 0.3); display: block;">
+
+                                <div class="flex justify-between mb-2">
+
+                                    <span class="font-bold text-sm" style="color: #d8b4fe;">Group 1</span>
+
+                                    <span style="font-size: 10px; background: rgba(88, 28, 135, 0.5); padding: 2px 8px; border-radius: 99px; font-weight: bold;">40 Online</span>
+
+                                </div>
+
+                                <p class="text-muted text-sm italic">"we are all anonymous"</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                   
+
+                    <div class="floating-card chat-window">
+
+                         <div class="chat-header" style="background: rgba(88, 28, 135, 0.1);">
+
+                            <div class="flex items-center gap-4">
+
+                                <div style="width: 48px; height: 48px; border-radius: 50%; background: #475569; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;"><i class="fas fa-user-secret"></i></div>
+
+                                <div>
+
+                                    <h3 class="font-bold text-lg">Group 1 (Anonymous)</h3>
+
+                                    <p style="font-size: 0.75rem; color: #d8b4fe; font-weight: bold; background: rgba(88, 28, 135, 0.3); padding: 2px 8px; border-radius: 8px; display: inline-block; margin-top: 4px;">Identity: Guest_8842</p>
+
+                                </div>
+
+                            </div>
+
+                             <button onclick="document.getElementById('invite-modal').classList.remove('hidden')" class="btn-outline" style="font-size: 0.8rem; display: flex; align-items: center; gap: 8px;">
+
+                                <i class="fas fa-user-plus"></i> Invite Friends
+
+                            </button>
+
+                        </div>
+
+                        <div class="chat-area flex flex-col justify-end" style="display: flex; flex-direction: column; justify-content: flex-end;">
+
+                            <div class="text-center" style="padding: 1rem; background: rgba(88, 28, 135, 0.1); border-radius: 12px; border: 1px solid rgba(88, 28, 135, 0.2); max-width: 300px; margin: 0 auto 2rem auto;">
+
+                                <i class="fas fa-shield-alt text-2xl mb-2" style="color: #d8b4fe;"></i>
+
+                                <p class="text-sm font-bold" style="color: #d8b4fe;">You entered the Anonymous Zone.</p>
+
+                            </div>
+
+                        </div>
+
+                        <div style="padding: 1.5rem; background: var(--bg-card); border-top: 1px solid var(--border-color);">
+
+                             <div class="input-group" style="border-radius: 99px; background: var(--bg-dark);">
+
+                                <input type="text" placeholder="Type anonymously...">
+
+                                <button style="width: 40px; height: 40px; border-radius: 50%; background: #475569; border: none; color: white; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+
+                                    <i class="fas fa-paper-plane" style="margin: 0; font-size: 0.9rem;"></i>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TAB: EXPLORE -->
+
+                <div id="tab-explore" class="hidden w-full h-full floating-card" style="flex-direction: column;">
+
+                    <div style="background: var(--bg-hover); padding: 3rem; border-bottom: 1px solid var(--border-color);">
+
+                        <h2 class="text-4xl font-bold mb-2">Discover Groups</h2>
+
+                        <p class="text-muted mb-8">Find communities and join the conversation.</p>
+
+                        <div class="input-group" style="background: var(--bg-card); max-width: 600px; padding: 1rem;">
+
+                            <i class="fas fa-search text-xl" style="margin-right: 1rem;"></i>
+
+                            <input type="text" placeholder="Search for public groups, topics, or tags..." style="font-size: 1.1rem;">
+
+                        </div>
+
+                    </div>
+
+                    <div class="flex-1 overflow-y-auto" style="padding: 3rem; background: var(--bg-card);">
+
+                        <h3 class="text-lg font-bold mb-6">Trending Now</h3>
+
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+
+                            <div style="background: var(--bg-hover); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s;">
+
+                                <div class="flex justify-between items-start mb-4">
+
+                                    <div style="width: 56px; height: 56px; background: rgba(234, 88, 12, 0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #f97316; font-size: 1.5rem;"><i class="fas fa-code"></i></div>
+
+                                    <button class="btn-outline" style="font-size: 0.75rem; padding: 0.4rem 1rem; border-radius: 99px;">Join Group</button>
+
+                                </div>
+
+                                <h4 class="font-bold text-lg mb-2">Web Developers Hub</h4>
+
+                                <p class="text-sm text-muted mb-4">Discussing React, PHP, and modern web stacks.</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TAB: SETTINGS (FULLY IMPLEMENTED) -->
+
+                <div id="tab-settings" class="hidden w-full h-full floating-card" style="flex-direction: column; overflow-y: auto;">
+
+                    <div class="settings-container">
+
+                        <h2 class="text-3xl font-bold mb-8">Account Settings</h2>
+
+                       
+
+                        <!-- Profile Section -->
+
+                        <div class="settings-section">
+
+                            <div class="settings-title"><i class="fas fa-user-circle"></i> Profile</div>
+
+                            <div class="flex items-center gap-4 mb-6">
+
+                                <div style="width: 80px; height: 80px; border-radius: 50%; background: #334155; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+
+                                    <i class="fas fa-user text-white"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <button class="btn-pink" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Change Avatar</button>
+
+                                    <button class="btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem; margin-left: 0.5rem; border: none; color: #ef4444;">Remove</button>
+
+                                </div>
+
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-6">
+
+                                <div class="settings-row">
+
+                                    <label class="settings-label">Display Name</label>
+
+                                    <div class="input-group">
+
+                                        <input type="text" value="Mursaline Huqe">
+
+                                    </div>
+
+                                </div>
+
+                                <div class="settings-row">
+
+                                    <label class="settings-label">Status Message</label>
+
+                                    <div class="input-group">
+
+                                        <input type="text" value="Coding the future...">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Account Security -->
+
+                        <div class="settings-section">
+
+                            <div class="settings-title"><i class="fas fa-shield-alt"></i> Security</div>
+
+                            <div class="settings-row">
+
+                                <label class="settings-label">Email Address</label>
+
+                                <div class="input-group">
+
+                                    <input type="email" value="mursaline@diu.edu.bd">
+
+                                </div>
+
+                            </div>
+
+                            <div class="settings-row">
+
+                                <label class="settings-label">Change Password</label>
+
+                                <div class="input-group mb-2">
+
+                                    <input type="password" placeholder="Current Password">
+
+                                </div>
+
+                                <div class="input-group">
+
+                                    <input type="password" placeholder="New Password">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                         <!-- Preferences -->
+
+                         <div class="settings-section">
+
+                            <div class="settings-title"><i class="fas fa-sliders-h"></i> Preferences</div>
+
+                            <div class="settings-row flex justify-between items-center">
+
+                                <span>Desktop Notifications</span>
+
+                                <div style="width: 40px; height: 20px; background: var(--primary-pink); border-radius: 20px; position: relative; cursor: pointer;">
+
+                                    <div style="width: 16px; height: 16px; background: white; border-radius: 50%; position: absolute; top: 2px; right: 2px;"></div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="settings-row flex justify-between items-center">
+
+                                <span>Sound Effects</span>
+
+                                <div style="width: 40px; height: 20px; background: var(--bg-card); border: 1px solid var(--text-muted); border-radius: 20px; position: relative; cursor: pointer;">
+
+                                    <div style="width: 16px; height: 16px; background: var(--text-muted); border-radius: 50%; position: absolute; top: 1px; left: 2px;"></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="flex justify-end gap-4 mb-8">
+
+                            <button class="btn-outline">Cancel</button>
+
+                            <button class="btn-pink">Save Changes</button>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- App Script -->
+    <script src="app.js"></script>
+
+</body>
+
+</html> 

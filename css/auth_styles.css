@@ -1,0 +1,125 @@
+/* Auth screens (login & register) */
+
+#auth-container {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.5);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 1000px;
+    height: 85vh;
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(16px);
+}
+
+.auth-left {
+    width: 50%;
+    padding: 3rem;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(30, 41, 59, 0.5);
+}
+
+.auth-right {
+    width: 50%;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .auth-left { display: none; }
+    .auth-right { width: 100%; }
+    #app { padding: 0.5rem; }
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--bg-hover);
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+    width: fit-content;
+}
+
+/* Auth header icon square */
+.logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.875rem; /* similar to text-3xl */
+    box-shadow: var(--shadow-subtle);
+    background: var(--primary-pink);
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+}
+
+/* Auth helpers */
+.auth-panel {
+    width: 100%;
+    max-width: 320px;
+}
+
+.auth-heading-main {
+    color: var(--text-main);
+}
+
+.auth-highlight {
+    color: var(--primary-pink);
+}
+
+.auth-feature-icon {
+    color: var(--primary-pink);
+}
+
+.auth-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.auth-register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.auth-divider {
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+}
+
+.auth-divider-sm {
+    border-top: 1px solid var(--border-color);
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+}
+
+.auth-register-submit {
+    margin-top: 0.5rem;
+}
+
+.auth-login-link {
+    color: var(--primary-pink);
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cheer Park - Account Settings</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="main_styles.css" />
+</head>
+
+<body>
+    <div id="app">
+        <!-- Dashboard sidebar + SETTINGS tab only -->
+        <div id="dashboard" class="w-full h-full gap-4 flex">
+            <div class="floating-card sidebar">
+                <div class="flex flex-col gap-4 w-full items-center">
+                    <div class="sidebar-avatar">
+                        <i class="fas fa-user text-2xl text-white"></i>
+                    </div>
+
+                    <div class="sidebar-nav">
+                        <div id="active-indicator" class="indicator-pos-settings"></div>
+
+                        <a href="dashboard_chats.html" class="nav-btn">
+                            <i class="fas fa-comment-alt"></i>
+                            <span>CHATS</span>
+                        </a>
+                        <a href="dashboard_people_team.html" class="nav-btn">
+                            <i class="fas fa-users"></i>
+                            <span>PEOPLE</span>
+                        </a>
+                        <a href="dashboard_fun_zone.html" class="nav-btn">
+                            <i class="fas fa-gamepad"></i>
+                            <span>ZONE</span>
+                        </a>
+                        <a href="dashboard_explore_groups.html" class="nav-btn">
+                            <i class="fas fa-compass"></i>
+                            <span>EXPLORE</span>
+                        </a>
+                        <a href="dashboard_settings_account.html" class="nav-btn">
+                            <i class="fas fa-cog"></i>
+                            <span>SETTING</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-4 items-center">
+                    <button onclick="logout()" class="btn-icon btn-logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="main-content" class="relative w-full h-full overflow-hidden">
+                <!-- SETTINGS TAB ONLY -->
+                <div id="tab-settings" class="w-full h-full floating-card flex flex-col overflow-y-auto">
+                    <div class="settings-container">
+                        <h2 class="text-3xl font-bold mb-8">Account Settings</h2>
+
+                        <div class="settings-section">
+                            <div class="settings-title"><i class="fas fa-user-circle"></i> Profile</div>
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="settings-avatar">
+                                    <i class="fas fa-user text-white"></i>
+                                </div>
+                                <div>
+                                    <button class="btn-pink settings-avatar-btn-primary">Change
+                                        Avatar</button>
+                                    <button class="btn-outline settings-avatar-btn-danger">Remove</button>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="settings-row">
+                                    <label class="settings-label">Display Name</label>
+                                    <div class="input-group">
+                                        <input type="text" value="Mursaline Huqe" />
+                                    </div>
+                                </div>
+                                <div class="settings-row">
+                                    <label class="settings-label">Status Message</label>
+                                    <div class="input-group">
+                                        <input type="text" value="Coding the future..." />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <div class="settings-title"><i class="fas fa-shield-alt"></i> Security</div>
+                            <div class="settings-row">
+                                <label class="settings-label">Email Address</label>
+                                <div class="input-group">
+                                    <input type="email" value="mursaline@diu.edu.bd" />
+                                </div>
+                            </div>
+                            <div class="settings-row">
+                                <label class="settings-label">Change Password</label>
+                                <div class="input-group mb-2">
+                                    <input type="password" placeholder="Current Password" />
+                                </div>
+                                <div class="input-group">
+                                    <input type="password" placeholder="New Password" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <div class="settings-title"><i class="fas fa-sliders-h"></i> Preferences</div>
+                            <div class="settings-row flex justify-between items-center">
+                                <span>Desktop Notifications</span>
+                                <div class="toggle">
+                                    <div class="toggle-thumb"></div>
+                                </div>
+                            </div>
+                            <div class="settings-row flex justify-between items-center">
+                                <span>Sound Effects</span>
+                                <div class="toggle--off">
+                                    <div class="toggle-thumb--off"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end gap-4 mb-8">
+                            <button class="btn-outline">Cancel</button>
+                            <button class="btn-pink">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

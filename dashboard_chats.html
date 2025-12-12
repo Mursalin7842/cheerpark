@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cheer Park - Chats</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="main_styles.css" />
+</head>
+
+<body>
+    <div id="app">
+        <!-- Only dashboard sidebar + CHATS tab -->
+        <div id="dashboard" class="w-full h-full gap-4 flex">
+            <!-- Sidebar -->
+            <div class="floating-card sidebar">
+                <div class="flex flex-col gap-4 w-full items-center">
+                    <div class="sidebar-avatar">
+                        <i class="fas fa-user text-2xl text-white"></i>
+                    </div>
+
+                    <div class="sidebar-nav">
+                        <div id="active-indicator" class="indicator-pos-chats"></div>
+
+                        <a href="dashboard_chats.html" class="nav-btn">
+                            <i class="fas fa-comment-alt"></i>
+                            <span>CHATS</span>
+                        </a>
+                        <a href="dashboard_people_team.html" class="nav-btn">
+                            <i class="fas fa-users"></i>
+                            <span>PEOPLE</span>
+                        </a>
+                        <a href="dashboard_fun_zone.html" class="nav-btn">
+                            <i class="fas fa-gamepad"></i>
+                            <span>ZONE</span>
+                        </a>
+                        <a href="dashboard_explore_groups.html" class="nav-btn">
+                            <i class="fas fa-compass"></i>
+                            <span>EXPLORE</span>
+                        </a>
+                        <a href="dashboard_settings_account.html" class="nav-btn">
+                            <i class="fas fa-cog"></i>
+                            <span>SETTING</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-4 items-center">
+                    <button onclick="logout()" class="btn-icon btn-logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CHATS TAB ONLY -->
+            <div id="main-content" class="relative w-full h-full overflow-hidden">
+                <div id="tab-home" class="w-full h-full flex gap-4">
+                    <div class="floating-card list-panel">
+                        <div class="panel-header">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-2xl font-bold">Messages</h2>
+                                <button class="btn-circle-add">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="input-group chat-search">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Search..." />
+                            </div>
+                        </div>
+                        <div class="flex-1 overflow-y-auto chat-scroll panel-body-padding">
+                            <div class="list-item">
+                                <div class="relative">
+                                    <div class="chat-list-avatar">T</div>
+                                    <div class="chat-list-status-dot"></div>
+                                </div>
+                                <div class="chat-list-text">
+                                    <div class="flex justify-between items-baseline mb-1">
+                                        <h4 class="font-bold text-sm">Tausif Bin Mozid</h4>
+                                        <span class="chat-list-meta-time">10:05</span>
+                                    </div>
+                                    <p class="text-muted text-sm chat-list-preview">Did you
+                                        finish the settings page?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="floating-card chat-window">
+                        <div class="chat-header">
+                            <div class="flex items-center gap-4">
+                                <div class="chat-header-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold">Group 63_N Project</h3>
+                                    <div class="flex items-center gap-2">
+                                        <span class="status-pill-online">Online</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="btn-icon"><i class="fas fa-phone"></i></button>
+                                <button class="btn-icon"><i class="fas fa-video"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="chat-area chat-scroll">
+                            <div class="flex justify-start">
+                                <div class="message-bubble msg-received">
+                                    <p>Ibrahim, did you add the database connection?</p>
+                                    <span class="message-timestamp-left">10:30
+                                        AM</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-end">
+                                <div class="message-bubble msg-sent">
+                                    <p>Yes, I just finished the SQL schema.</p>
+                                    <span class="message-timestamp-right">10:32
+                                        AM <i class="fas fa-check-double ml-1"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-footer">
+                            <div class="input-group chat-input-pill">
+                                <button class="chat-attach-btn">
+                                    <i class="fas fa-paperclip text-lg"></i>
+                                </button>
+                                <input type="text" placeholder="Type a message..." />
+                                <button class="chat-send-btn">
+                                    <i class="fas fa-paper-plane icon-small"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cheer Park - Fun Zone</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="main_styles.css" />
+</head>
+
+<body>
+    <div id="app">
+        <!-- Invite modal reused here -->
+        <div id="invite-modal" class="hidden modal-overlay">
+            <div class="modal-content">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold">Invite Friends</h3>
+                    <button onclick="document.getElementById('invite-modal').classList.add('hidden')"
+                        class="text-muted hover:text-white transition">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="modal-description">
+                    <p class="text-sm text-muted">Share this secure link to invite others:</p>
+                </div>
+                <div class="flex gap-2">
+                    <div class="input-group w-full">
+                        <input type="text" value="cheerpark.com/g/8392" readonly />
+                    </div>
+                    <button class="btn-pink">Copy</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard sidebar + FUN ZONE tab only -->
+        <div id="dashboard" class="w-full h-full gap-4 flex">
+            <div class="floating-card sidebar">
+                <div class="flex flex-col gap-4 w-full items-center">
+                    <div class="sidebar-avatar">
+                        <i class="fas fa-user text-2xl text-white"></i>
+                    </div>
+
+                    <div class="sidebar-nav">
+                        <div id="active-indicator" class="indicator-pos-fun"></div>
+
+                        <a href="dashboard_chats.html" class="nav-btn">
+                            <i class="fas fa-comment-alt"></i>
+                            <span>CHATS</span>
+                        </a>
+                        <a href="dashboard_people_team.html" class="nav-btn">
+                            <i class="fas fa-users"></i>
+                            <span>PEOPLE</span>
+                        </a>
+                        <a href="dashboard_fun_zone.html" class="nav-btn">
+                            <i class="fas fa-gamepad"></i>
+                            <span>ZONE</span>
+                        </a>
+                        <a href="dashboard_explore_groups.html" class="nav-btn">
+                            <i class="fas fa-compass"></i>
+                            <span>EXPLORE</span>
+                        </a>
+                        <a href="dashboard_settings_account.html" class="nav-btn">
+                            <i class="fas fa-cog"></i>
+                            <span>SETTING</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-4 items-center">
+                    <button onclick="logout()" class="btn-icon btn-logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="main-content" class="relative w-full h-full overflow-hidden">
+                <!-- FUN ZONE TAB ONLY -->
+                <div id="tab-funzone" class="w-full h-full flex gap-4">
+                    <div class="floating-card list-panel">
+                        <div class="funzone-header-bar">
+                            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 funzone-title">
+                                <i class="fas fa-mask"></i> Fun Zone
+                            </h2>
+                            <div class="input-group funzone-search">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Filter groups..." />
+                            </div>
+                            <button class="btn-pink w-full funzone-create-btn">
+                                <i class="fas fa-plus mr-2"></i> CREATE NEW ZONE
+                            </button>
+                        </div>
+                        <div class="flex-1 overflow-y-auto p-4 funzone-list-body">
+                            <div class="list-item funzone-list-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-bold text-sm funzone-title">Group 1</span>
+                                    <span class="funzone-list-badge">40
+                                        Online</span>
+                                </div>
+                                <p class="text-muted text-sm italic">"we are all anonymous"</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="floating-card chat-window">
+                        <div class="chat-header funzone-chat-header">
+                            <div class="flex items-center gap-4">
+                                <div class="funzone-anon-avatar">
+                                    <i class="fas fa-user-secret"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg">Group 1 (Anonymous)</h3>
+                                    <p class="funzone-identity-pill">
+                                        Identity: Guest_8842</p>
+                                </div>
+                            </div>
+                            <button onclick="document.getElementById('invite-modal').classList.remove('hidden')"
+                                class="btn-outline btn-inline-icon">
+                                <i class="fas fa-user-plus"></i> Invite Friends
+                            </button>
+                        </div>
+                        <div class="chat-area flex flex-col justify-end">
+                            <div class="text-center funzone-info-box">
+                                <i class="fas fa-shield-alt text-2xl mb-2 funzone-info-icon"></i>
+                                <p class="text-sm font-bold funzone-info-text">You entered the Anonymous Zone.</p>
+                            </div>
+                        </div>
+                        <div class="chat-anon-footer">
+                            <div class="input-group chat-anon-input-pill">
+                                <input type="text" placeholder="Type anonymously..." />
+                                <button class="chat-anon-send-btn">
+                                    <i class="fas fa-paper-plane icon-small"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

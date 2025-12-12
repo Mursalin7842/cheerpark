@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cheer Park - Login & Register</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- App Styles (combined) -->
+    <link rel="stylesheet" href="main_styles.css" />
+</head>
+
+<body>
+    <div id="app">
+        <!-- AUTH SCREENS ONLY (Login / Signup) - copied from auth.html -->
+        <div id="auth-container">
+            <!-- LOGIN SCREEN -->
+            <div id="login-screen" class="floating-card auth-card relative z-10">
+                <div class="auth-left">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="logo-box">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <h1 class="text-5xl font-bold tracking-tight">Cheer Park</h1>
+                    </div>
+                    <h2 class="text-4xl font-bold mb-10 leading-tight auth-heading-main">
+                        We care about<br /><span class="auth-highlight">your Secrets...</span>
+                    </h2>
+
+                    <div>
+                        <div class="feature-item">
+                            <i class="far fa-check-circle text-2xl auth-feature-icon"></i>
+                            <span>Screenshot Notification</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-user-secret text-2xl auth-feature-icon"></i>
+                            <span>Anonymous Group Chat</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-photo-video text-2xl auth-feature-icon"></i>
+                            <span>Lossless Media Sharing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="auth-right">
+                    <div class="auth-panel">
+                        <h2 class="text-4xl font-bold mb-2">Welcome Back</h2>
+                        <p class="text-muted mb-10">Please enter your details.</p>
+
+                        <form onsubmit="handleLogin(event)" class="auth-login-form">
+                            <div class="input-group">
+                                <i class="far fa-user"></i>
+                                <input type="text" id="login-username" name="username" placeholder="Username"
+                                    required />
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="login-password" name="password" placeholder="Password"
+                                    required />
+                            </div>
+                            <button type="submit" class="btn-pink w-full">Log in</button>
+
+                            <div class="mt-8 pt-6 text-center auth-divider">
+                                <p class="text-xs font-bold text-muted mb-3">New to Cheer Park?</p>
+                                <button type="button" onclick="toggleAuth('register')" class="btn-outline w-full">Create
+                                    New Account</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REGISTER SCREEN -->
+            <div id="register-screen" class="hidden floating-card auth-card relative z-10">
+                <div class="auth-left">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="logo-box">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h1 class="text-5xl font-bold tracking-tight">Join Us</h1>
+                    </div>
+                    <h2 class="text-4xl font-bold mb-6">Start your <span class="auth-highlight">Secure
+                            Journey</span></h2>
+                    <p class="text-lg text-muted">Create an account to access features like lossless sharing and
+                        anonymous zones.</p>
+                </div>
+
+                <div class="auth-right">
+                    <div class="auth-panel">
+                        <h2 class="text-4xl font-bold mb-2">Create Account</h2>
+                        <p class="text-muted mb-8">It's free and takes 1 minute.</p>
+
+                        <form onsubmit="handleRegister(event)" class="auth-register-form">
+                            <div class="input-group">
+                                <i class="far fa-user"></i>
+                                <input type="text" name="reg-username" placeholder="Username" required />
+                            </div>
+                            <div class="input-group">
+                                <i class="far fa-envelope"></i>
+                                <input type="email" name="reg-email" placeholder="Email Address" required />
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" name="reg-password" placeholder="Password" required />
+                            </div>
+                            <button type="submit" class="btn-pink w-full auth-register-submit">Sign Up</button>
+
+                            <div class="text-center auth-divider-sm">
+                                <p class="text-xs font-bold text-muted mb-2">Already have an account?</p>
+                                <button type="button" onclick="toggleAuth('login')" class="auth-login-link">
+                                    Log In Here
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

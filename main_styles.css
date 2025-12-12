@@ -1,0 +1,8 @@
+/* Cheer Park - main styles entry file
+   This file imports smaller, easier-to-understand CSS files. */
+
+@import url("css/global_styles.css");       /* global reset, variables, layout, utilities */
+@import url("css/auth_styles.css");         /* login & register screens */
+@import url("css/dashboard_styles.css");    /* dashboard layout: sidebar, chat, lists */
+@import url("css/modal_styles.css");        /* invite modal overlay & content */
+@import url("css/settings_styles.css");     /* account settings page */
